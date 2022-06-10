@@ -1,6 +1,6 @@
 import java.util.Scanner
 fun main(){
-    convite()
+inicioIdade()
 }
 
 fun inicioIdade(){
@@ -11,24 +11,33 @@ fun inicioIdade(){
     } else { convite() }
 }
 
-fun convite(){
+fun convite() {
     println("Qual é o seu tipo de convite: Luxo, Comum ou Premium?")
     var conviteTipo = readLine()
-    var Premium = "Premium"
-    var Comum = "Comum"
-    var Luxo = "Luxo"
-    if(conviteTipo == Premium || conviteTipo == Comum || conviteTipo == Luxo){
-       code()
-    }else{ println("Convite invalido!")}
-}
+    if (conviteTipo != null) {
+        conviteTipo = conviteTipo.lowercase()
 
-fun code(){
-    println("Por favor, digite seu codigo.")
-    var codigo = readLine()
-    if (codigo != null){
-        codigo.lowercase()
+    var Premium = "premium"
+    var Comum = "comum"
+    var Luxo = "luxo"
+
+    if (conviteTipo == Premium || conviteTipo == Comum || conviteTipo == Luxo) {
+        println("Por favor, digite seu codigo.")
+        var codigo = readLine()
+        if (codigo != null) {
+            codigo = codigo.lowercase()
+            if (conviteTipo == Comum && codigo.startsWith("xt")) {
+                println("Bem-vindo!")
+            } else if (conviteTipo == Premium || conviteTipo == Luxo && codigo.startsWith("xl")) {
+                println("Seja bem vindo, rico!")
+            } else {
+                println("Codigo invalido!")
+            }
+
+
+        } else {
+            println("Convite invalido!")
+        }
     }
-
-
-
+}
 }
